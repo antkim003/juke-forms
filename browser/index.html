@@ -14,16 +14,23 @@
     <script src="/js/player/player.controller.js" defer></script>
     <script src="/js/player/player.factory.js" defer></script>
     <script src="/js/sidebar/sidebar.controller.js" defer></script>
+    <script src="/js/sidebar/sidebar.directives.js" defer></script>
     <script src="/js/artist/artist.controllers.js" defer></script>
     <script src="/js/artist/artist.factory.js" defer></script>
     <script src="/js/artist/artist.states.js" defer></script>
     <script src="/js/song/song.factory.js" defer></script>
+    <script src="/js/playlist/playlist.controllers.js" defer></script>
+    <script src="/js/playlist/playlist.states.js" defer></script>
+    <script src="/js/playlist/playlist.factory.js" defer></script>
   </head>
   <body ng-app="juke">
+
+
     <div id="main" class="container-fluid">
 
       <div class="col-xs-2">
         <sidebar ng-controller="SidebarCtrl">
+
           <img src="juke.svg" class="logo">
           <section>
             <h4 ui-sref-active="active" class="menu-item active">
@@ -35,7 +42,21 @@
               <a ui-sref="artists">ARTISTS</a>
             </h4>
           </section>
+
+          <section>
+
+            <h4 class="menu-item">
+              PLAYLISTS
+            </h4>
+            <p class="playlist-item" ng-repeat="playlist in playlists">
+              <a ui-sref="onePlaylist({ playlistId: playlist._id })">{{ playlist.name }}</a>
+            </p>
+
+            <button class="btn btn-primary" ui-sref="newPlaylist"><i class="glyphicon glyphicon-plus"></i> PLAYLIST</button>
+          </section>
         </sidebar>
+
+
       </div>
 
       <div class="col-xs-10">

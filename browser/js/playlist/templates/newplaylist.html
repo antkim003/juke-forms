@@ -1,0 +1,32 @@
+<div class="well">
+  <form class="form-horizontal" name="newPlaylistForm" ng-submit="newPlaylist()" novalidate>
+    <fieldset>
+      <legend>New Playlist</legend>
+      <div class="form-group">
+        <label class="col-xs-2 control-label">Name</label>
+        <div class="col-xs-10">
+          <input class="form-control" type="text" name="name" ng-model="searchContent" ng-maxlength="16" required="">
+          <div ng-show="newPlaylistForm.$submitted">
+            <div class="alert alert-warning" ng-show="newPlaylistForm.$error.required">Please enter a name</div>  
+          </div>
+          
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-10 col-xs-offset-2">
+          <button type="submit" class="btn btn-success">Create Playlist</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div class="well">
+  <div class="row">
+    <div class="col-xs-12" ng-repeat="playlist in playlists">
+      <div class="form-group">
+        {{playlist.name}}
+      </div>
+    </div>
+  </div>
+</div>
